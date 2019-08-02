@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Hrealm/leetcode-js/issues"
   },
-  "homepage": "https://github.com/Hrealm/leetcode-js#readme"
+  "homepage": "https://github.com/Hrealm/leetcode-js#readme",
+  "devDependencies": {
+    "eslint": "^6.1.0"
+  }
 }
