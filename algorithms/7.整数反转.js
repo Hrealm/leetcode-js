@@ -44,21 +44,10 @@
  * @return {number}
  */
 var reverse = function(x) {
-    let flag = false;
-    x < 0 ? flag = true : flag = false; 
-    const str = x.toString();
-    let arry = str.split('');
-    let reArry = [];
-    for(let i = arry.length - 1; i >= 0; i--){
-        reArry.push(arry[i]);
-    }
-    let reX =  parseInt(reArry.join(''));
-    let re = flag ? parseInt('-' + reX) : reX ;
-    if((re > 2147483647) || (re < -2147483648)){
-        return 0;
-    } else{
-        return re;
-    }
-    
+    const symbol = x < 0 ? '-' : '' ;
+    let result = parseInt(symbol + String(x).split('').reverse().join(''));
+    if(result < Math.pow(-2,31) || result > Math.pow(2,31) - 1)
+    return 0;
+    return result;
 };
 
