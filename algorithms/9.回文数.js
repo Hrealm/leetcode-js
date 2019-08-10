@@ -49,7 +49,7 @@ var isPalindrome = function(x) {
     if(x < 0 || x % 10 === 0) return false;
     let ans = 0;
     let number = x;
-    while(number !== 0){
+    while(number){
         const sum = number % 10;
         ans = ans * 10 + sum;
         number = (number - sum) / 10;
