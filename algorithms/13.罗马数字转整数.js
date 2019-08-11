@@ -72,7 +72,7 @@
  * @return {number}
  */
 var romanToInt = function(s) {
-    const obj = {
+    const romanObj = {
         "I": 1,
         "V": 5,
         "X": 10,
@@ -82,32 +82,15 @@ var romanToInt = function(s) {
         "M": 1000
     }
     let sum = 0;
-    const arry = s.split('');
-    if(arry.length === 1) return obj[arry[0]];
-    for(let i = 0; i <= arry.length + 1; i++){
-        if((i+1) >= arry.length){
-            if(obj[arry[arry.length - 2]] >= obj[arry[arry.length - 1]]) {
-                return sum += obj[arry[arry.length - 1]]
-            }else{
-                return sum;
-            }
-        }
-        if(obj[arry[i]] >= obj[arry[i+1]] ){
-            sum += obj[arry[i]];
-        }else{
-            sum += obj[arry[i+1]] - obj[arry[i]];
+    for(let i = 0; i < s.length; i++){
+        if(romanObj[s[i]] < romanObj[s[i+1]]){
+            sum += romanObj[s[i+1]] - romanObj[s[i]];
             i++;
+        }else{
+            sum += romanObj[s[i]]
         }
     }
-    // arry.forEach((item,index)=>{
-        
-    // })
-    // return sum;
-    // console.log(sum);
-    
+    return sum;
 };
-
-// console.log(romanToInt('LVIII'));
-// romanToInt('IV');
 
 
