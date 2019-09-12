@@ -59,20 +59,8 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    // for(let i = 0; i < s.length;){
-    //     let rightNum = s[i].charCodeAt() === 40 ? 1 : 2;
-    //     if(s[i].charCodeAt() + rightNum === s[i+1].charCodeAt()){
-    //         i++;
-    //         if(i + 1 === s.length){ return true;};
-    //         i++;
-    //         if(i + 1 === s.length){ return true;};
-    //     }else if(s[i].charCodeAt() + rightNum === s[s.length - (i+1)].charCodeAt()){
-    //         i++;
-    //     }else{
-    //         return false;
-    //     }
-    // }
-
+    if(s.length % 2 != 0){return false;}
+    //栈
     class Stack{
         constructor(){
             var items = [];
@@ -90,25 +78,29 @@ var isValid = function(s) {
             }
         }
     }
-
+    //实例化栈
     let stack = new Stack();
+    let rightNum = 0;
     for(let i = 0; i < s.length;){
-        stack.push(s[i]);
-        let rightNum = s[i].charCodeAt() == 40 ? 1 : 2;
-        if(stack.peek().charCodeAt() + rightNum == s[i+1].charCodeAt()){
-            stack.pop();
+        if(stack.isEmpty()){
+            stack.push(s[i]);
+            rightNum = stack.peek().charCodeAt() == 40 ? 1 : 2;
             i++;
-            if(i + 1 == s.length){ return stack.isEmpty()};
         }
-        i++;
-        // if(i + 1 == s.length){ return stack.isEmpty()};
-        // stack.push(s[i]);
-        // i++;
+        if(stack.peek().charCodeAt() + rightNum == s[i].charCodeAt()){
+            stack.pop();
+            if(!stack.isEmpty()){
+                rightNum = stack.peek().charCodeAt() == 40 ? 1 : 2;
+            }
+            i++;
+        }else{
+            stack.push(s[i]);
+            rightNum = stack.peek().charCodeAt() == 40 ? 1 : 2;
+            i++;
+        }
     }
     return stack.isEmpty();
 
 };
-
-console.log(isValid("{[]}"));
 
 
