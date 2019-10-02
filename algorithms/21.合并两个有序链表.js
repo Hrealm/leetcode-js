@@ -37,27 +37,41 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function(l1, l2) {
+    // 遍历
+    // const list = new ListNode();
+    // let current = list;
+    // while(l1 && l2){
+    //     let x = l1 !== null ? l1.val : 0;
+    //     let y = l2 !== null ? l2.val : 0;
+    //     if(x < y){
+    //         current.next = new ListNode(x);
+    //         current = current.next;
+    //         if(l1 !== null) l1 = l1.next;
+    //     }else{
+    //         current.next = new ListNode(y);
+    //         current = current.next;
+    //         if(l2 !== null) l2 = l2.next;
+    //     }
+    // }
+    // if(l1 == null){
+    //     current.next = l2;
+    // }else{
+    //     current.next = l1;
+    // }
+    // return list.next;
+
+    // 递归
     const list = new ListNode();
-    let current = list;
-    while(l1 && l2){
-        let x = l1 !== null ? l1.val : 0;
-        let y = l2 !== null ? l2.val : 0;
-        if(x < y){
-            current.next = new ListNode(x);
-            current = current.next;
-            if(l1 !== null) l1 = l1.next;
-        }else{
-            current.next = new ListNode(y);
-            current = current.next;
-            if(l2 !== null) l2 = l2.next;
-        }
+    if(l1 == null) return l2;
+    if(l2 == null) return l1;
+    if(l1.val < l2.val){
+        list.val = l1.val;
+        list.next = mergeTwoLists(l1.next,l2);
+    } else{
+        list.val = l2.val;
+        list.next = mergeTwoLists(l2.next,l1);
     }
-    if(l1 == null){
-        current.next = l2;
-    }else{
-        current.next = l1;
-    }
-    return list.next;
+    return list;
 };
 
 // @lc code=end
