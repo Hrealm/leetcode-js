@@ -37,7 +37,7 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function(l1, l2) {
-    // 遍历
+    // 方法一： 遍历
     // const list = new ListNode();
     // let current = list;
     // while(l1 && l2){
@@ -60,7 +60,7 @@ var mergeTwoLists = function(l1, l2) {
     // }
     // return list.next;
 
-    // 递归
+    //方法二： 递归
     const list = new ListNode();
     if(l1 == null) return l2;
     if(l2 == null) return l1;
