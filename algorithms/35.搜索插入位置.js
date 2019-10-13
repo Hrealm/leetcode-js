@@ -50,14 +50,19 @@
  * @return {number}
  */
 var searchInsert = function(nums, target) {
-    for(let i=0; i<nums.length; i++){
+    if(nums.length == 0) return 0;
+    for(let i=0; i<nums.length;){
         if(nums[i] == target){
+            return i;
+        }else if(nums[i] < target){
+            i++;
+            if(i == nums.length) return i;
+            continue;
+        }else if(nums[i] > target){
+            // nums.splice(i,0,target);
             return i;
         }
     }
-    nums.push(target);
-    nums.sort((a,b)=>{return a-b});
-    return searchInsert(nums, target);
 
 };
 // @lc code=end
