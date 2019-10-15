@@ -3,7 +3,7 @@
  *
  * [53] 最大子序和
  *
- * https://leetcode-cn.com/problems/maximum-subarray/description/
+ * https://leetcode-cn.com/problems/./description/
  *
  * algorithms
  * Easy (47.69%)
@@ -34,7 +34,6 @@
  * @return {number}
  */
 var maxSubArray = function(nums) {
-    
 };
 // @lc code=end
 
