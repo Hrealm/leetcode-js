@@ -34,7 +34,7 @@
  * @return {number}
  */
 var maxSubArray = function(nums) {
-    mA = [nums[0]];
+    let mA = [nums[0]];
     for(let i=1; i<nums.length; i++){
         mA[i] = nums[i] + (mA[i-1] > 0 ? mA[i-1] : 0);
     }
