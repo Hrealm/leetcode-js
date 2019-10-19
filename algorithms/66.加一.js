@@ -53,7 +53,7 @@ var plusOne = function(digits) {
                 digits[i] = 0;
                 i--;
                 if(i < 0){
-                    digits.splice(0,0,1);
+                    digits.unshift(1);
                     return digits;
                 }
             }
