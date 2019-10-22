@@ -45,22 +45,30 @@
  * @return {number}
  */
 var climbStairs = function(n) {
+    // if(n < 3) return n;
+    // //默认全是1个台阶走完
+    // let count = 1;
+    // //i 代表走多少步2个台阶的
+    // for(let i=1; i<=Math.floor(n/2); i++){
+    //     if(i == 1){
+    //         count += n-1;
+    //     }else{
+    //         count += factorial(n-i)/(factorial(i)*factorial(n-i-i));
+    //     }
+    // }
+    // function factorial(x){
+    //     return x < 2 ? 1 : x * factorial(x-1);
+    // }
+    // return count;
+
     if(n < 3) return n;
-    //默认全是1个台阶走完
-    let count = 1;
-    //i 代表走多少步2个台阶的
-    for(let i=1; i<=Math.floor(n/2); i++){
-        if(i == 1){
-            count += n-1;
-        }else{
-            count += factorial(n-i)/(factorial(i)*factorial(n-i-i));
-        }
+    let count = [0,1,2,3];
+    for(let i=4; i<=n; i++){
+        count[i] = count[i-1] + count[i-2];
     }
-    function factorial(x){
-        return x < 2 ? 1 : x * factorial(x-1);
-    }
-    return count;
-   
+    
+    return count[n];
+
 };
 // @lc code=end
 
