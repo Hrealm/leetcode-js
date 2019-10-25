@@ -41,27 +41,40 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
-    let j = 0;
-    let len = m+n;
-    for(let i=0; i<len; i++){
-        if(i < m){
-            if(nums2[j] > nums1[i] && nums2[j] <= nums1[i+1]){
-                nums1.splice(i+1,0,nums2[j]);
-                nums1.pop();
-                j++;
-                m++;
-            }else if(nums2[j] < nums1[i]){
-                nums1.splice(i,0,nums2[j]);
-                nums1.pop();
-                j++;
-                m++;
-            }
+    // 插入法
+    // let j = 0;
+    // let len = m+n;
+    // for(let i=0; i<len; i++){
+    //     if(i < m){
+    //         if(nums2[j] > nums1[i] && nums2[j] <= nums1[i+1]){
+    //             nums1.splice(i+1,0,nums2[j]);
+    //             nums1.pop();
+    //             j++;
+    //             m++;
+    //         }else if(nums2[j] < nums1[i]){
+    //             nums1.splice(i,0,nums2[j]);
+    //             nums1.pop();
+    //             j++;
+    //             m++;
+    //         }
+    //     }else{
+    //         nums1.splice(i,1,nums2[j]);
+    //         j++;
+    //     }
+    // }
+    // return nums1;
+
+    // 比较替换法
+    let pos = m + n - 1;
+    while(n>0){
+        if(m>0 && nums1[m-1] > nums2[n-1]){
+            nums1[pos--] = nums1[m-1];
+            m--;
         }else{
-            nums1.splice(i,1,nums2[j]);
-            j++;
+            nums1[pos--] = nums2[n-1];
+            n--;
         }
     }
-    // return nums1;
     
 };
 
