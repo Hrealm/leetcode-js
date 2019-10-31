@@ -46,25 +46,9 @@
  */
 var maxDepth = function(root) {
     if(!root) return 0;
-    // let depth = 1;
-    // return isNullNode(root,depth);
     return Math.max(maxDepth(root.left),maxDepth(root.right)) +1;
 
 };
-
-// var isNullNode = function(r,d){
-//     if(r){
-//         if(r.left || r.right){
-//             d++;
-//             return Math.max(isNullNode(root.left, d),isNullNode(root.right, d));
-//         }else{
-//             return d;
-//         }
-        
-//     }else{
-//         return d;
-//     }
-// }
 
 // @lc code=end
 
