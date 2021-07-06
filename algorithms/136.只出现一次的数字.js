@@ -38,16 +38,24 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = i+1; j < nums.length; j++) {
-      if (nums[i] == nums[j]) {
-        nums.splice(i,1)
-        nums.splice(j-1,1)
-        singleNumber(nums)
-      }
+  // for (let i = 0; i < nums.length; i++) {
+  //   for (let j = i+1; j < nums.length; j++) {
+  //     if (nums[i] == nums[j]) {
+  //       nums.splice(i,1)
+  //       nums.splice(j-1,1)
+  //       singleNumber(nums)
+  //     }
+  //   }
+  // }
+  // return nums[0]
+  nums.sort((a,b) => a - b)
+  console.log(nums);
+  nums.forEach((element, index) => { 
+    if (element == nums[index+1]) {
+      nums.splice(index, 2, null)
     }
-  }
-  return nums[0]
+  })
+  return nums.sort()[0]
 };
 // @lc code=end
 
