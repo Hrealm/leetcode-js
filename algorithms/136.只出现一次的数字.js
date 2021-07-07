@@ -37,15 +37,22 @@
  * @param {number[]} nums
  * @return {number}
  */
-var singleNumber = function(nums) {
-  nums.sort((a,b) => a - b)
-  console.log(nums);
-  nums.forEach((element, index) => { 
-    if (element == nums[index+1]) {
-      nums.splice(index, 2, null)
-    }
-  })
-  return nums.sort()[0]
+var singleNumber = function (nums) {
+  // nums.sort((a,b) => a - b)
+  // nums.forEach((element, index) => { 
+  //   if (element == nums[index+1]) {
+  //     nums.splice(index, 2, null)
+  //   }
+  // })
+  // return nums.sort()[0]
+
+  /**
+   * 异或：相同为0，不同为1. 异或同一个数两次，原数不变。
+   * i ^ 0 = i
+   * i ^ i = 0
+   */
+  return nums.reduce((a, c) => a ^ c)
+
 };
 // @lc code=end
 
